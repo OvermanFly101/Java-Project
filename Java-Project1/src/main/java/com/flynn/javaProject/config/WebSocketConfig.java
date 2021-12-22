@@ -12,8 +12,6 @@ import com.flynn.javaProject.handlers.MessageHandler;
 
 @Configuration
 @EnableWebSocket
-@EnableAutoConfiguration(
-exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class WebSocketConfig implements WebSocketConfigurer {
 
 	@Override

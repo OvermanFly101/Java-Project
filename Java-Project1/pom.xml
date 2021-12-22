@@ -127,7 +127,6 @@
 		<dependency>
     		<groupId>org.springframework</groupId>
     		<artifactId>spring-websocket</artifactId>
-    		<version>5.2.3.RELEASE</version>
 		</dependency>
 
 	</dependencies>
