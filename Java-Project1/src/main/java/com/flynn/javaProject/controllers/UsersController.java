@@ -30,40 +30,48 @@ public class UsersController {
         this.userValidator = userValidator;
     }
     
+    @RequestMapping(value = {"/", "/home"})
+    public String home( Model model) {
+        return "homePage.jsp";
+    }
+    
     //	**** Register User *********************************
     
     @GetMapping("/registration")
     public String registerForm(@Valid @ModelAttribute("user") User user) {
-        return "registrationPage.jsp";
+        return "LoginPage.jsp";
     }
     
     
     @PostMapping("/registration")
-    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
+    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
     	userValidator.validate(user, result);
     	if (result.hasErrors()) {
-            return "registrationPage.jsp";
+    		//Went form HTTP error 500 to 404 (better?)
+    		model.addAttribute("user", new User());
+            return "LoginPage.jsp";
         }
         userService.saveWithUserRole(user);
+        System.out.println("SUCCESSFUL!");
         return "redirect:/login";
     }
     
     //	**** Register Admin ********************************
     
     @GetMapping("/registration/admin")
-    public String registerAdminForm(@Valid @ModelAttribute("user") User user) {
+    public String registerAdminForm(@Valid @ModelAttribute("adminUser") User adminUser) {
         return "registrationAdminPage.jsp";
     }
     
     //Kept saying there was a duplicate method. Not sure where.
     //Changed method from 'registration' to 'register' -FA
     @PostMapping("/registration/admin")
-    public String register(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
-    	userValidator.validate(user, result);
+    public String processRegisterAdminForm(@Valid @ModelAttribute("adminUser") User adminUser, BindingResult result, Model model, HttpSession session) {
+    	userValidator.validate(adminUser, result);
     	if (result.hasErrors()) {
-            return "registrationPage.jsp";
+            return "registrationAdminPage.jsp";
         }
-        userService.saveWithUserRole(user);
+        userService.saveWithUserRole(adminUser);
         return "redirect:/login";
     }
         
@@ -77,15 +85,9 @@ public class UsersController {
             model.addAttribute("logoutMessage", "Logout Successful!");
             return "loginPage.jsp";
         }
+        
+        
         return "loginPage.jsp";
     }
-    
-    
-    @RequestMapping(value = {"/", "/home"})
-    public String home(Principal principal, Model model) {
-        System.out.println("******** in Home **************");
-        String username = principal.getName();
-        model.addAttribute("currentUser", userService.findByUsername(username));
-        return "homePage.jsp";
-    }
+ 
 }

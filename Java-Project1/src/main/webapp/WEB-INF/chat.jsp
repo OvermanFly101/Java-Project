@@ -4,16 +4,24 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Chat</title>
+	<title>Insert title here</title>
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="/css/chat.css">
+	
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script src="/webjars/jquery/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	
 	<!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" type="text/css" href="/css/chat.css">
-	
+    <!-- Icons -->
+    <script src="https://use.fontawesome.com/b4a0ba9277.js"></script>
+    
 	<script type="application/javascript">
-	
 		let ws;
 		
         function connect() {
@@ -43,24 +51,31 @@
             ws.send(JSON.stringify(messageObject))
         }
     </script>
-    
 </head>
-<body>
+<body id="body">
 	<div id="container">
-		<h1>Chat Application</h1>
-		<form class="message-content-body">
-			<div class="section-1">
-				<label for="name">Name: </label>
-				<input type="text" id="name" placeholder="Enter your name"/>
-				<input class="btn" id="connectButton" type="button" value="Connect" onclick="connect()">
+		<h1 class="header"><a href="/">CLΛN<i class="fa fa-gamepad" aria-hidden="true"></i></a></h1>
+		<div class="chat-body">
+			<input type="text" id="name" placeholder="Enter your name to connect">
+			<button id="connectButton" type="button" onclick="connect()"><i class="fa fa-plug" aria-hidden="true"></i></button>
+			<!-- <input id="connectButton" type="button" value="Connect" onclick="connect()"> -->
+			<div class="bot-msg">
+				<div class="user">
+					<span><i class="fa fa-user" aria-hidden="true"></i></span>
+					<p class="bot-name">Bot</p>
+				</div>
+				<div>
+					<p class="msg">Welcome to our chat!</p>
+					<p class="msg">Start by saying hi to everyone!</p>
+				</div>
 			</div>
-			<div id="messages" class="section-2"></div>
-			<div class="section-3">
-				<label for="message">Message: </label></br>
-				<textarea id="message" rows="3" cols="100" placeholder='Type your message here'></textarea>
-				<input class="btn" type="button" value="Send Message" onclick="sendToGroupChat()">	
+			<div id="messages"></div>
+			<div class="message-section">
+				<input type="text" id="message" placeholder="Type your message here">
+				<button class="send-btn" onclick="sendToGroupChat()"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
 			</div>
-		</form>
+		</div>
+		<!-- <input type="button" value="send" onclick="sendToGroupChat()"> -->
 	</div>
 </body>
 </html>
