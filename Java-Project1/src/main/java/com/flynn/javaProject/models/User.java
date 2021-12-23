@@ -29,10 +29,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Size(min=3)
+
+    @Size(min=3, message="Must provide a username, no less than 3 characters long.")
     private String username;
     
-    @Size(min=8)
+    @Size(min=8, message="Must provide a password, no less than 8 characters long.")
     private String password;
     
     @Transient

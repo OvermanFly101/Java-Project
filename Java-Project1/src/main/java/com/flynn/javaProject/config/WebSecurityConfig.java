@@ -26,6 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.
             authorizeRequests()
                 .antMatchers("/webjars/**", "/css/**","/images/**", "/home", "/games","/show/game/**", "/registration", "/registration/admin", "static/**", "/chat" ).permitAll()
+                //still have to permit all in order to work
                 //.antMatchers("/chat/**").access("hasRole('USER')")
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .anyRequest().authenticated()

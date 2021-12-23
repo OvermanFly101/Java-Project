@@ -39,7 +39,7 @@ public class UsersController {
     
     @GetMapping("/registration")
     public String registerForm(@Valid @ModelAttribute("user") User user) {
-        return "LoginPage.jsp";
+        return "registrationPage.jsp";
     }
     
     
@@ -49,11 +49,11 @@ public class UsersController {
     	if (result.hasErrors()) {
     		//Went form HTTP error 500 to 404 (better?)
     		model.addAttribute("user", new User());
-            return "LoginPage.jsp";
+            return "registrationPage.jsp";
         }
         userService.saveWithUserRole(user);
         System.out.println("SUCCESSFUL!");
-        return "redirect:/login";
+        return "redirect:/home";
     }
     
     //	**** Register Admin ********************************

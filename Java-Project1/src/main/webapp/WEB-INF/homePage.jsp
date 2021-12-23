@@ -132,9 +132,9 @@
         <div class="developers">
         	<h4>Brought To You By</h4>
         	<div class="developers-intro">
-        		<p><span class="name">Flynn</span>- Teams glue and team player. Dolorem repellat architecto inventore maxime molestias iure voluptatem, temporibus reiciendis</p>
-        		<p><span class="name">Jenn</span>- Teams creative thinker and director. Dolorem repellat architecto inventore maxime molestias iure voluptatem, temporibus reiciendis</p>
-        		<p><span class="name">Val</span>- Teams security and wisdom go-to. Dolorem repellat architecto inventore maxime molestias iure voluptatem, temporibus reiciendis</p>
+        		<p><span class="name">Flynn</span> - Teams glue and team player. Dolorem repellat architecto inventore maxime molestias iure voluptatem, temporibus reiciendis</p>
+        		<p><span class="name">Jenn</span> - Teams creative thinker and director. Dolorem repellat architecto inventore maxime molestias iure voluptatem, temporibus reiciendis</p>
+        		<p><span class="name">Val</span> - Teams security and code wisdom guru. Dolorem repellat architecto inventore maxime molestias iure voluptatem, temporibus reiciendis</p>
         	</div>
         </div>
 
