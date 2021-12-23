@@ -1,7 +1,5 @@
 package com.flynn.javaProject.services;
 
-import java.util.Optional;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -39,11 +37,6 @@ public class UserService {
     
     // 3
     public User findByUsername(String username) {
-    	Optional<User> optionalUser = userRepository.findByUsername(username);
-        if(optionalUser.isPresent()) {
-        	return optionalUser.get();
-        }else {
-        	return null;
-        }
+        return userRepository.findByUsername(username);
     }
 }

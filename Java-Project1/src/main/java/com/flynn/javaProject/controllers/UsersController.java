@@ -80,6 +80,7 @@ public class UsersController {
         return "loginPage.jsp";
     }
     
+    
     @RequestMapping(value = {"/", "/home"})
     public String home(Principal principal, Model model) {
         System.out.println("******** in Home **************");

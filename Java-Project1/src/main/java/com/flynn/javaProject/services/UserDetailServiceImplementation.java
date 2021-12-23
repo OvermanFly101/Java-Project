@@ -2,7 +2,6 @@ package com.flynn.javaProject.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,7 +16,8 @@ import com.flynn.javaProject.repositories.UserRepository;
 
 @Service
 public class UserDetailServiceImplementation implements UserDetailsService{
-    private UserRepository userRepository;
+    
+	private UserRepository userRepository;
     
     //added void to fix -FA
     public void UserDetailsServiceImplementation(UserRepository userRepository){
@@ -26,13 +26,13 @@ public class UserDetailServiceImplementation implements UserDetailsService{
     // 1
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> optionalUser = userRepository.findByUsername(username);
-        if(optionalUser.isPresent()) {
-        	User user = optionalUser.get();
-        	return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthorities(user));
-        }else {
-        	throw new UsernameNotFoundException("User not found");
+        User user = userRepository.findByUsername(username);
+        
+        if(user == null) {
+            throw new UsernameNotFoundException("User not found");
         }
+        
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthorities(user));
     }
     
     // 2

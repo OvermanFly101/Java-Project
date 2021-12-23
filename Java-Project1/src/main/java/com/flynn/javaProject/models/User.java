@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
+
+
 @Entity
 @Table(name="users")
 public class User {
@@ -47,6 +49,15 @@ public class User {
         joinColumns = @JoinColumn(name = "user_id"), 
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
+    
+	//Users --> Followers <-- Games
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "followers", 
+        joinColumns = @JoinColumn(name = "user_id"), 
+        inverseJoinColumns = @JoinColumn(name = "game_id")
+    )
+    private List<Game> games;
     
     //	**** CONSTRUCTORS ********************************
     
@@ -107,6 +118,14 @@ public class User {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public List<Game> getGames() {
+		return games;
+	}
+
+	public void setGames(List<Game> games) {
+		this.games = games;
 	}
     
 }

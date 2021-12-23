@@ -39,6 +39,12 @@ public class Game {
 	@Size(min=2, max=2500, message="How will people understand the game if you don't give a description. REQUIRED!")
 	private String description;
 	
+	@NotNull 
+	private String image;
+	
+	@NotNull
+	private String category;
+	
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "followers", 
@@ -116,6 +122,14 @@ public class Game {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 	
